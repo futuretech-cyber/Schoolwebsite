@@ -1,0 +1,279 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>School – Building Future Leaders Today</title>
+  <style>
+    :root {
+      --blue-900:#0f3d73; /* deep royal */
+      --blue-800:#124a8c;
+      --blue-700:#1554a6;
+      --blue-600:#1a66cc; /* CTA hover */
+      --blue:#13468a;     /* header base */
+      --bg:#f5f6f8;       /* page background */
+      --card:#ffffff;     /* cards */
+      --text:#0c1222;     /* headings */
+      --muted:#5b6576;    /* body text */
+      --shadow: 0 8px 28px rgba(16,38,73,.12);
+      --radius: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --gap: clamp(16px, 2.2vw, 24px);
+      --container: min(1100px, 92vw);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    /* ---------------- HEADER ---------------- */
+    .site-shell { padding: clamp(14px, 1.8vw, 18px); }
+    .site {
+      background: #fff;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(0deg, var(--blue-800), var(--blue));
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 14px 0;
+    }
+    .container { width: var(--container); margin: 0 auto; }
+
+    .nav { display: flex; align-items: center; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing:.3px; }
+    .brand .logo { width: 36px; height: 36px; border-radius: 10px; background: #fff; display: grid; place-items: center; }
+    .brand .logo svg { width: 22px; height: 22px; fill: var(--blue-800); }
+
+    .navlinks { margin-left: auto; display: flex; gap: 20px; align-items: center; }
+    .navlinks a { color:#e8eef8; text-decoration: none; font-weight: 500; font-size: 15px; }
+    .navlinks a:hover { color:#fff; }
+    .cta { background:#fff; color: var(--blue-800); padding:10px 16px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+    .cta:hover { background: #e9f1ff; }
+
+    /* ---------------- HERO ---------------- */
+    .hero { position: relative; }
+    .hero-media { height: clamp(280px, 42vw, 420px); background: #d9e3f7 url('https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,32,64,.55) 0%, rgba(13,32,64,.15) 60%, rgba(13,32,64,0) 75%); border-bottom-left-radius: var(--radius-lg); border-bottom-right-radius: var(--radius-lg); }
+    .hero-content { position:absolute; inset:0; display:grid; place-items:center start; padding-left: max(4vw, 28px); }
+    .hero h1 { color:#fff; font-size: clamp(28px, 5vw, 48px); line-height:1.1; max-width: 17ch; margin:0 0 16px 0; text-shadow: 0 6px 28px rgba(0,0,0,.25); }
+    .hero .btn { display:inline-block; background:#1d69d6; color:#fff; padding:12px 18px; border-radius: 10px; text-decoration:none; font-weight:700; }
+    .hero .btn:hover { background: var(--blue-600); }
+
+    /* ---------------- QUICK CARDS ---------------- */
+    .quick-cards { transform: translateY(-40px); }
+    .card-row { display:grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+    .card { background: var(--card); border-radius: 14px; box-shadow: var(--shadow); padding: 18px; display:flex; align-items:center; gap:12px; }
+    .card .icon { width: 40px; height: 40px; border-radius: 12px; background: #eaf2ff; display:grid; place-items:center; flex: 0 0 auto; }
+    .card svg { width: 22px; height: 22px; fill: var(--blue-700); }
+    .card span { font-weight: 700; }
+
+    /* ---------------- MAIN PANELS ---------------- */
+    .panels { background:#fff; border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: 28px; margin-top: -16px; }
+    .grid-2 { display:grid; grid-template-columns: 1.3fr .9fr; gap: var(--gap); align-items: start; }
+
+    .panel { background: #fff; border:1px solid #eef1f6; border-radius: 14px; padding: 18px; }
+    .panel h2 { margin: 0 0 14px; font-size: 20px; }
+    .news-list { display: grid; gap: 10px; }
+    .news-item { background:#f6f8fc; border-radius: 12px; padding: 12px; }
+    .news-item .line { height: 10px; border-radius: 6px; background:#e0e6f3; margin-bottom:8px; }
+    .news-item .line:last-child { width:70%; margin-bottom:0; }
+
+    .quote { font-style: italic; color: var(--muted); }
+    .quote cite { display:block; margin-top: 16px; font-style: normal; color: var(--text); font-weight: 600; }
+
+    /* ---------------- FOOTER ---------------- */
+    .footer { background: linear-gradient(0deg, var(--blue-900), var(--blue-800)); color:#d9e6ff; border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl); }
+    .footer .wrap { padding: 28px; display:grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--gap); }
+    .footer h3 { margin: 0 0 10px; color:#fff; font-size: 18px; }
+    .footer a { color:#dfe9ff; text-decoration:none; }
+    .social { display:flex; gap:10px; }
+    .social a { width:36px; height:36px; border-radius:10px; background:#0e2f5a; display:grid; place-items:center; }
+    .social svg { width:18px; height:18px; fill:#fff; }
+
+    /* ---------------- RESPONSIVE ---------------- */
+    @media (max-width: 980px){
+      .card-row { grid-template-columns: repeat(2, 1fr); }
+      .grid-2 { grid-template-columns: 1fr; }
+      .footer .wrap { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px){
+      .navlinks { display:none; }
+      .card-row { grid-template-columns: 1fr; }
+      .footer .wrap { grid-template-columns: 1fr; }
+      .hero-content { padding-left: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+    <div class="site">
+
+      <!-- ===== Header / Navigation ===== -->
+      <header class="header">
+        <div class="container">
+          <nav class="nav" aria-label="Primary">
+            <a class="brand" href="#" aria-label="School Home">
+              <span class="logo" aria-hidden="true">
+                <!-- Shield logo with S + mortarboard -->
+                <svg viewBox="0 0 24 24" role="img" aria-label="School Crest">
+                  <path d="M12 2l7 3v6c0 5.25-3.6 8.86-7 9.99C8.6 19.86 5 16.25 5 11V5l7-3zM7 6.2v4.7c0 3.78 2.34 6.57 5 7.56 2.66-.99 5-3.78 5-7.56V6.2l-5-2.14L7 6.2z"/>
+                </svg>
+              </span>
+              <span>SCHOOL</span>
+            </a>
+
+            <div class="navlinks">
+              <a href="home.html">Home</a>
+              <a href="about.html">About Us</a>
+              <a href="academic.html">Academics</a>
+              <a href="admission.html">Admissions</a>
+              <a href="library.html">Library</a>
+              <a class=" cta" href="index.html">Portal</a>
+              <a class="cta" href="#apply">Apply Now</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- ===== Hero ===== -->
+      <section class="hero" aria-label="Hero">
+        <div class="hero-media"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content container">
+          <div>
+            <h1>UNKNOW YET</h1>
+            <a class="btn" href="#learn">Learn More</a>
+          </div>
+        </div>
+      </section>
+
+     <!-- ===== Quick Info Cards (Clickable) ===== -->
+<section class="quick-cards">
+  <div class="container card-row">
+
+    <!-- Card 1: Programs Offered -->
+    <article class="card clickable-card">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 6.5C3 5.12 4.12 4 5.5 4h9A2.5 2.5 0 0 1 17 6.5V18H5.5A2.5 2.5 0 0 1 3 15.5v-9zM17 18h1.5A2.5 2.5 0 0 0 21 15.5v-9A2.5 2.5 0 0 0 18.5 4H17v14z"/></svg>
+      </span>
+      <span>Programs Offered</span>
+      <div class="card-content" style="display:none; margin-top:8px; font-size:14px; color:#13468a;">
+        <ul>
+          <li>Primary & Secondary Curriculum</li>
+          <li>STEM & Language Programs</li>
+          <li>Music, Arts & Sports Clubs</li>
+          <li>Leadership & Enrichment Workshops</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Card 2: Admissions Info -->
+    <article class="card clickable-card">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 3l9 4.5-9 4.5L3 7.5 12 3zm0 10.5l6.75-3.38 2.25 1.13L12 16.5 3 11.25l2.25-1.13L12 13.5z"/></svg>
+      </span>
+      <span>Admissions Info</span>
+      <div class="card-content" style="display:none; margin-top:8px; font-size:14px; color:#13468a;">
+        <ul>
+          <li>Admission open for 2026/2027 session</li>
+          <li>Online application available</li>
+          <li>Scholarships & Financial Aid programs</li>
+          <li>Entrance Exams & Interviews</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Card 3: School Facilities -->
+    <article class="card clickable-card">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2V10z"/></svg>
+      </span>
+      <span>School Facilities</span>
+      <div class="card-content" style="display:none; margin-top:8px; font-size:14px; color:#13468a;">
+        <ul>
+          <li>Modern Science & Computer Labs</li>
+          <li>Library with 15,000+ Books</li>
+          <li>Sports & Recreation Centers</li>
+          <li>Auditorium & Art Studios</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Card 4: Upcoming Events -->
+    <article class="card clickable-card">
+      <span class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 6h10V4H7v4zm0 3h5V9H7v2zm0 3h7v-2H7v2z"/></svg>
+      </span>
+      <span>Upcoming Events</span>
+      <div class="card-content" style="display:none; margin-top:8px; font-size:14px; color:#13468a;">
+        <ul>
+          <li>Science Fair – Dec 12, 2025</li>
+          <li>Annual Sports Day – Jan 20, 2026</li>
+          <li>Parent-Teacher Meeting – Feb 5, 2026</li>
+          <li>Summer Camp Enrollment – Mar 2026</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== JavaScript for Toggle ===== -->
+<script>
+  document.querySelectorAll('.clickable-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const content = card.querySelector('.card-content');
+      content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    });
+  });
+</script>
+
+      <!-- ===== Footer ===== -->
+      <footer class="footer">
+        <div class="container wrap">
+          <div>
+            <h3>Quick Links</h3>
+            <p><a href="#">Home</a><br/>
+               <a href="about.html">About Us</a><br/>
+               <a href="#academics">Academics</a></p>
+          </div>
+          <div>
+            <h3>School Address</h3>
+            <p>1234 School St<br/>City, State, ZIP</p>
+          </div>
+          <div>
+            <h3>Follow Us</h3>
+            <div class="social" aria-label="Social media">
+              <a href="#" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.16 1.8.16v2h-1c-1 0-1.3.62-1.3 1.25V12h2.2l-.35 3h-1.85v7A10 10 0 0 0 22 12z"/></svg>
+              </a>
+              <a href="#" aria-label="Twitter">
+                <svg viewBox="0 0 24 24"><path d="M21 5.5c-.7.3-1.5.5-2.2.6.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.9-2.7 1.1a3.8 3.8 0 0 0-6.6 2.6c0 .3 0 .6.1.9-3.2-.2-6-1.7-7.9-4a3.8 3.8 0 0 0 .6 5 3.7 3.7 0 0 1-1.7-.5v.1c0 1.8 1.3 3.3 3.1 3.7-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.4 1.8 2.5 3.4 2.6a7.7 7.7 0 0 1-4.8 1.7h-1a10.9 10.9 0 0 0 5.9 1.8c7.1 0 11-5.9 11-11v-.5c.8-.5 1.4-1.2 1.9-2z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm5.25-1.75a1 1 0 1 1-1-1 1 1 0 0 1 1 1z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+</body>
+</html>
+
+
